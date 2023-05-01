@@ -1,0 +1,401 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+OrionLib:MakeNotification({
+	Name = "Loading...",
+	Content = "Loading The UI",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+local Window = OrionLib:MakeWindow({Name = "DreadzHub", HidePremium = false, SaveConfig = true, ConfigFolder = "DreadzHub"})
+OrionLib:MakeNotification({
+	Name = "Loaded!",
+	Content = "Loaded The UI",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+--Tabs
+local Tab1 = Window:MakeTab({
+	Name = "Links",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab2 = Window:MakeTab({
+	Name = "Basic Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab3 = Window:MakeTab({
+	Name = "Farms",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab4 = Window:MakeTab({
+	Name = "Dupes | Paid",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab5 = Window:MakeTab({
+	Name = "Fun Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+--Links
+local Section = Tab1:AddSection({
+	Name = "Links"
+})
+Tab1:AddLabel("Feel Free To Check Us Out!")
+Tab1:AddDropdown({
+	Name = "Links",
+	Default = "No Link Copied",
+	Options = {"Reset Clipboard", "Youtube", "Discord"},
+	Callback = function(Value)
+		if (Value) == "Reset Clipboard" then
+OrionLib:MakeNotification({
+	Name = "Reset!",
+	Content = "Reset What You Had Copied",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+setclipboard(" ")
+end
+		if (Value) == "Youtube" then
+OrionLib:MakeNotification({
+	Name = "Copied!",
+	Content = "Copied Youtube Link",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+setclipboard("https://www.youtube.com/channel/UCqR74O-JloMP2r5X7-0XJQQ")
+end
+if (Value) == "Discord" then
+OrionLib:MakeNotification({
+	Name = "Copied!",
+	Content = "Copied Discord Link",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+setclipboard("https://discord.gg/dzSHV7kGpG")
+end
+	end    
+})
+--Basic Scripts
+local Section = Tab2:AddSection({
+	Name = "Basic Scripts"
+})
+Tab2:AddLabel("Just Some Basic Scripts!")
+local Section = Tab2:AddSection({
+	Name = "Break-In Story"
+})
+Tab2:AddButton({
+	Name = "Free Police Role",
+	Callback = function()
+      	OrionLib:MakeNotification({
+	Name = "Successful!",
+	Content = "Successfully Got The Police Role!",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})	
+local A_1 = "Gun"
+local A_2 = true
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.OutsideRole
+Event:FireServer(A_1, A_2)
+  	end    
+})
+Tab2:AddButton({
+	Name = "Free Pie Dish",
+	Callback = function()
+      	OrionLib:MakeNotification({
+	Name = "Successful!",
+	Content = "Successfully Got A Pie Dish (Or Cola Pack If Lucky!)",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})	
+local A_1 = 1
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.BloxyPack
+Event:FireServer(A_1)
+  	end    
+})
+Tab2:AddDropdown({
+	Name = "Get Items",
+	Default = "",
+	Options = {"Apple", "Cookie", "Cola", "Chips", "Linked Sword", "Ice Bat", "Teddy Bear", "Med-Kit", "Cure"},
+	Callback = function(Value)
+      	OrionLib:MakeNotification({
+	Name = "Successful!",
+	Content = "Successfully Got The "..(Value).."!",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+if Value == "Apple" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("Apple")
+end	
+if Value == "Cookie" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("Cookie")
+end	
+if Value == "Cola" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("BloxyCola")
+end	
+if Value == "Chips" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("Chips")
+end	
+if Value == "Linked Sword" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("LinkedSword")
+end	
+if Value == "Ice Bat" then
+local A_1 = true
+local A_2 = "Breaker"
+local Event = game:GetService("ReplicatedStorage").RemoteEvents.BasementWeapon
+Event:FireServer(A_1, A_2)
+end	
+if Value == "Teddy Bear" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("TeddyBloxpin")
+end	
+if Value == "Med-Kit" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("MedKit")
+end	
+if Value == "Cure" then
+ game.ReplicatedStorage.RemoteEvents.GiveTool:FireServer("Cure")
+end	
+	end    
+})
+Tab2:AddDropdown({
+	Name = "Teleports",
+	Default = "",
+	Options = {"Outside", "Shop", "Blue Room", "Green Room", "Pink Room", "Attic", "Basement"},
+	Callback = function(Value)
+      	OrionLib:MakeNotification({
+	Name = "Successful!",
+	Content = "Successfully Teleported To The "..(Value).."!",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+if Value == "Outside" then
+ local teleport_table = {
+        location1 = Vector3.new(-34.07843017578125, 2.6188385486602783, -151.373046875),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Shop" then
+  local teleport_table = {
+        location1 = Vector3.new(-426.7676086425781, 3.150047779083252, -120.09556579589844),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Blue Room" then
+  local teleport_table = {
+        location1 = Vector3.new(-47.13035202026367, 17.844968795776367, -210.8623809814453),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Green Room" then
+  local teleport_table = {
+        location1 = Vector3.new(2.38232684135437, 18.0970516204834, -199.8433837890625),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Pink Room" then
+  local teleport_table = {
+        location1 = Vector3.new(3.187270164489746, 18.0970516204834, -226.52456665039062),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Attic" then
+  local teleport_table = {
+        location1 = Vector3.new(-17.985218048095703, 36.18763732910156, -213.52069091796875),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+if Value == "Basement" then
+  local teleport_table = {
+        location1 = Vector3.new(74.5324478149414, -14.416438102722168, -151.46005249023438),
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+            -- a.Completed:Wait()
+            -- print('Teleporting Done!')
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end	
+	end    
+})
+local Section = Tab2:AddSection({
+	Name = "Giant Survival"
+})
+Tab2:AddDropdown({
+	Name = "Free Weapons",
+	Default = "",
+	Options = {"Golden Pistol", "Black Hole Gun", "Crazy Futuristic Minigun"},
+	Callback = function(Value)
+		OrionLib:MakeNotification({
+	Name = "Successful!",
+	Content = "Successfully Equipped "..(Value).."!",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+local args = {
+    [1] = {
+        [1] = (Value)
+    }
+}
+
+workspace.__THINGS.__REMOTES.weaponequipped:FireServer(unpack(args))
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+	end    
+})
+local Section = Tab2:AddSection({
+	Name = "Football Fusion 2"
+})
+--Functions
+local player = game.Players.LocalPlayer
+local rs = game:GetService("RunService")
+ 
+function magBall(ball)
+   if ball and player.Character then
+       firetouchinterest(player.Character["Left Arm"], ball, 0)
+       firetouchinterest(player.Character["Right Arm"], ball, 0)
+       task.wait()
+       firetouchinterest(player.Character["Left Arm"], ball, 1)
+       firetouchinterest(player.Character["Right Arm"], ball, 1)
+   end
+end
+--Actual
+Tab2:AddLabel("Mags Should Auto-Disable If Voted QB")
+Tab2:AddToggle({
+	Name = "Mags",
+	Default = false,
+	Callback = function(bool)
+		shared.Mags = bool
+    rs.Stepped:Connect(function()
+    if shared.Mags then
+       for i,v in pairs(workspace:GetChildren()) do
+           if v.Name == "Football" and v:IsA("BasePart") then
+               wait()
+               local mag = (player.Character.Torso.Position - v.Position).Magnitude
+               magBall(v)
+               print('Magz On! :)')
+           end
+        end
+    else
+        wait()
+        print('Magz Off :(')
+    end
+end)
+	end    
+})
